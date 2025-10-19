@@ -84,7 +84,7 @@ app.get('/api/filter', async (req, res) => {
 app.get('/api/chinese', async (req, res) => {
     try {
         const { query, page } = req.query;
-        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=zh&query=${encodeURIComponent(query)}&page=${page || 1}`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -97,7 +97,7 @@ app.get('/api/chinese', async (req, res) => {
 app.get('/api/japan', async (req, res) => {
     try {
         const { query, page } = req.query;
-        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=ja&query=${encodeURIComponent(query)}&page=${page || 1}`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -119,17 +119,6 @@ app.get('/api/cartoon', async (req, res) => {
 });
 
 
-// Search movies
-app.get('/api/anime', async (req, res) => {
-    try {
-        const { query, page } = req.query;
-        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
-        const data = await response.json();
-        res.json(data);
-    } catch (err) {
-        res.status(500).json({ error: 'Failed to search movies' });
-    }
-});
 
 // Serve frontend for all other routes
 app.get('/', (req, res) => {
