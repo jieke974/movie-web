@@ -33,7 +33,7 @@ app.get('/api/korean', async (req, res) => {
     try {
          const { query, page } = req.query;
      
-         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${env.process.TMDB_API_KEY}&with_original_language=ko&sort_by=popularity.desc`);
+         const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=ko&sort_by=popularity.desc`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -87,7 +87,7 @@ app.get('/api/chinese', async (req, res) => {
     try {
         
         const { query, page } = req.query;
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${env.process.TMDB_API_KEY}&with_original_language=zh&sort_by=popularity.desc`);
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=zh&sort_by=popularity.desc`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -101,7 +101,7 @@ app.get('/api/japan', async (req, res) => {
     try {
       
         const { query, page } = req.query;
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${env.process.TMDB_API_KEY}&with_original_language=ja&sort_by=popularity.desc`);
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=ja&sort_by=popularity.desc`);
        
         const data = await response.json();
         res.json(data);
@@ -115,7 +115,7 @@ app.get('/api/japan', async (req, res) => {
 app.get('/api/cartoon', async (req, res) => {
     try {
         const { query, page } = req.query;
-        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${env.process.TMDB_API_KEY}&with_original_language=en&with_genres=16&sort_by=popularity.desc`);
+        const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${TMDB_API_KEY}&with_original_language=en&with_genres=16&sort_by=popularity.desc`);
        
         const data = await response.json();
         res.json(data);
