@@ -30,8 +30,9 @@ app.get('/api/popular', async (req, res) => {
 // Top rated movies
 app.get('/api/korean', async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const response = await fetch(`${TMDB_BASE_URL}/movie/korean?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`);
+         const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=ko&query=korean&page=${page || 1}`);
+       
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -83,8 +84,9 @@ app.get('/api/filter', async (req, res) => {
 // Search movies
 app.get('/api/chinese', async (req, res) => {
     try {
-         const page = req.query.page || 1;
-        const response = await fetch(`${TMDB_BASE_URL}/movie/chinese?api_key=${TMDB_API_KEY}&language=zh&page=${page}`);
+        
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=zh&query=chinese&page=${page || 1}`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -96,9 +98,9 @@ app.get('/api/chinese', async (req, res) => {
 // Search movies
 app.get('/api/japan', async (req, res) => {
     try {
-         const page = req.query.page || 1;
-        const response = await fetch(`${TMDB_BASE_URL}/movie/japan?api_key=${TMDB_API_KEY}&language=ja&page=${page}`);
-        
+      
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=ja&query=japan&page=${page || 1}`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
@@ -110,8 +112,8 @@ app.get('/api/japan', async (req, res) => {
 // Search movies
 app.get('/api/cartoon', async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const response = await fetch(`${TMDB_BASE_URL}/movie/cartoon?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`);
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=cartoon&page=${page || 1}`);
         const data = await response.json();
         res.json(data);
     } catch (err) {
