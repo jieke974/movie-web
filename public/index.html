@@ -161,12 +161,10 @@ async function fetchMovies(type, query=null, genre=null, language=null, append=f
         let url = `/api/${type}?page=${page}`;
         if(type==='search' && query) url = `/api/search?query=${encodeURIComponent(query)}&page=${page}`;
         if(type==='cartoon' || type==='chinese'){
-            url = `/api/filter?page=${page}`;
-            if(genre) url += `&genre=${genre}`;
-            if(language) url += `&language=${language}`;
+            let url = `/api/${type}?page=${page}`;
         }
 
-        if (type === 'popular' || type === 'korean' || type === 'upcoming' || type === 'cartoon'|| type === 'chinese') {
+        if (type === 'popular' || type === 'korean' || type === 'upcoming' ) {
             url += `?page=${page}`;
         }
 
