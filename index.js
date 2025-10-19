@@ -28,7 +28,7 @@ app.get('/api/popular', async (req, res) => {
 });
 
 // Top rated movies
-app.get('/api/top-rated', async (req, res) => {
+app.get('/api/korean', async (req, res) => {
     try {
         const page = req.query.page || 1;
         const response = await fetch(`${TMDB_BASE_URL}/movie/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=${page}`);
@@ -76,6 +76,58 @@ app.get('/api/filter', async (req, res) => {
         res.json(data);
     } catch (err) {
         res.status(500).json({ error: 'Failed to fetch filtered movies' });
+    }
+});
+
+
+// Search movies
+app.get('/api/chinese', async (req, res) => {
+    try {
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const data = await response.json();
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to search movies' });
+    }
+});
+
+
+// Search movies
+app.get('/api/japan', async (req, res) => {
+    try {
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const data = await response.json();
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to search movies' });
+    }
+});
+
+
+// Search movies
+app.get('/api/cartoon', async (req, res) => {
+    try {
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const data = await response.json();
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to search movies' });
+    }
+});
+
+
+// Search movies
+app.get('/api/anime', async (req, res) => {
+    try {
+        const { query, page } = req.query;
+        const response = await fetch(`${TMDB_BASE_URL}/search/movie?api_key=${TMDB_API_KEY}&language=en-US&query=${encodeURIComponent(query)}&page=${page || 1}`);
+        const data = await response.json();
+        res.json(data);
+    } catch (err) {
+        res.status(500).json({ error: 'Failed to search movies' });
     }
 });
 
